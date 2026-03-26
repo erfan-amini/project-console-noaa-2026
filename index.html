@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coastal Flood Adaptation — Project Resources</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1e2e;
+    --paper: #f4f1ec;
+    --accent: #1b6b93;
+    --accent-dark: #0e4a68;
+    --warm: #c4956a;
+    --border: #d4cfc7;
+    --muted: #7a7670;
+    --card-bg: #ffffff;
+    --tag-lock: #b45309;
+    --tag-lock-bg: #fef3c7;
+    --tag-team: #0369a1;
+    --tag-team-bg: #e0f2fe;
+    --shadow: 0 1px 3px rgba(26,30,46,.06), 0 6px 16px rgba(26,30,46,.04);
+    --shadow-hover: 0 2px 8px rgba(26,30,46,.08), 0 12px 28px rgba(26,30,46,.07);
+    --radius: 10px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── PARTNER BAR ── */
+  .partner-bar {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: .65rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.8rem;
+    flex-wrap: wrap;
+  }
+
+  .partner-logo {
+    display: flex;
+    align-items: center;
+    gap: .45rem;
+    text-decoration: none;
+    color: var(--ink);
+    opacity: .72;
+    transition: opacity .2s;
+  }
+  .partner-logo:hover { opacity: 1; }
+
+  .partner-logo img {
+    height: 28px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .partner-name {
+    font-size: .7rem;
+    font-weight: 500;
+    letter-spacing: .01em;
+    white-space: nowrap;
+    line-height: 1.15;
+  }
+
+  .partner-name small {
+    display: block;
+    font-weight: 400;
+    font-size: .6rem;
+    color: var(--muted);
+  }
+
+  .partner-divider {
+    width: 1px;
+    height: 22px;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 4.5rem 2rem 4rem;
+    background: linear-gradient(165deg, #0e4a68 0%, #1b6b93 40%, #2d8bb5 100%);
+    color: #fff;
+    text-align: center;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 80%, rgba(196,149,106,.15) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 20%, rgba(255,255,255,.07) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0; right: 0;
+    height: 60px;
+    background: var(--paper);
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+
+  .wave-overlay {
+    position: absolute;
+    inset: 0;
+    opacity: .06;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 18px,
+        rgba(255,255,255,.5) 18px, rgba(255,255,255,.5) 19px);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .noaa-emblem {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 1.2rem;
+    filter: brightness(0) invert(1);
+    opacity: .9;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .7rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 100px;
+    padding: 5px 14px;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(4px);
+  }
+
+  .hero-badge .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--warm);
+    display: inline-block;
+  }
+
+  .hero h1 {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    line-height: 1.22;
+    margin-bottom: .9rem;
+    letter-spacing: -.01em;
+    text-align: center;
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,.8);
+    max-width: 600px;
+    text-align: center;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .65rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: .5rem;
+    text-align: center;
+  }
+
+  .section-title {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: .4rem;
+    color: var(--ink);
+    text-align: center;
+  }
+
+  .section-desc {
+    font-size: .9rem;
+    color: var(--muted);
+    margin: 0 auto 2rem;
+    max-width: 560px;
+    text-align: center;
+  }
+
+  /* ── CARDS ── */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.6rem 1.5rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    box-shadow: var(--shadow);
+    transition: box-shadow .25s, transform .25s, border-color .25s;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-3px);
+    border-color: var(--accent);
+  }
+
+  .card-icon {
+    width: 42px; height: 42px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .card-icon.survey { background: #dbeafe; color: #2563eb; }
+  .card-icon.adapt  { background: #d1fae5; color: #059669; }
+  .card-icon.abm    { background: #fce7f3; color: #be185d; }
+  .card-icon.drive   { background: #fef3c7; color: #b45309; }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+  }
+
+  .card-title {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .card-summary {
+    font-size: .84rem;
+    color: var(--muted);
+    line-height: 1.55;
+    flex: 1;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+    margin-top: auto;
+    padding-top: .6rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .access-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .62rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .access-tag.locked { background: var(--tag-lock-bg); color: var(--tag-lock); }
+  .access-tag.team   { background: var(--tag-team-bg); color: var(--tag-team); }
+
+  .card-link-icon {
+    color: var(--accent);
+    font-size: .85rem;
+    transition: transform .2s;
+  }
+  .card:hover .card-link-icon { transform: translateX(3px); }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2rem 1.5rem 2.5rem;
+    font-size: .72rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  /* ── ANIMATION ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-content { animation: fadeUp .7s ease both; }
+  .card:nth-child(1) { animation: fadeUp .5s .15s ease both; }
+  .card:nth-child(2) { animation: fadeUp .5s .25s ease both; }
+  .card:nth-child(3) { animation: fadeUp .5s .35s ease both; }
+  .card:nth-child(4) { animation: fadeUp .5s .45s ease both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .hero { padding: 3.5rem 1.25rem 3rem; }
+    .cards { grid-template-columns: 1fr; }
+    .partner-bar { gap: 1rem; padding: .6rem 1rem; }
+    .partner-logo img { height: 22px; }
+    .partner-name { font-size: .62rem; }
+    .partner-divider { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════ PARTNER LOGO BAR ═══════ -->
+<nav class="partner-bar">
+  <a class="partner-logo" href="https://www.noaa.gov/" target="_blank" rel="noopener">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/NOAA_logo.svg" alt="NOAA">
+    <span class="partner-name">NOAA<small>Climate Program Office</small></span>
+  </a>
+  <span class="partner-divider"></span>
+  <a class="partner-logo" href="https://www.climate.columbia.edu/" target="_blank" rel="noopener">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Columbia_University_seal.svg" alt="Columbia University">
+    <span class="partner-name">Columbia University<small>Climate School</small></span>
+  </a>
+  <span class="partner-divider"></span>
+  <a class="partner-logo" href="https://www.stevens.edu/" target="_blank" rel="noopener">
+    <img src="https://upload.wikimedia.org/wikipedia/en/3/3a/Stevens_Institute_of_Technology_seal.svg" alt="Stevens Institute">
+    <span class="partner-name">Stevens Institute<small>of Technology</small></span>
+  </a>
+  <span class="partner-divider"></span>
+  <a class="partner-logo" href="https://www.vims.edu/" target="_blank" rel="noopener">
+    <img src="https://upload.wikimedia.org/wikipedia/en/4/4a/College_of_William_%26_Mary_logo.svg" alt="William &amp; Mary / VIMS">
+    <span class="partner-name">Virginia Institute<small>of Marine Science</small></span>
+  </a>
+  <span class="partner-divider"></span>
+  <a class="partner-logo" href="#" onclick="return false;">
+    <!-- Shinnecock Nation – no public logo; using a minimal glyph -->
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+    <span class="partner-name">Shinnecock<small>Nation</small></span>
+  </a>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<header class="hero">
+  <div class="wave-overlay"></div>
+  <div class="hero-content">
+    <img class="noaa-emblem"
+         src="https://upload.wikimedia.org/wikipedia/commons/7/79/NOAA_logo.svg"
+         alt="NOAA Emblem">
+    <div class="hero-badge"><span class="dot"></span> NOAA CPO · BIL Competition 2</div>
+    <h1>Co-developing a Decision Support Framework for Adaptation to Coastal Flooding</h1>
+    <p class="hero-sub">A comparative case study of communities in New York and Virginia.</p>
+  </div>
+</header>
+
+<!-- ═══════ TOOLS ═══════ -->
+<main class="section">
+  <div class="section-label">Project Console</div>
+  <h2 class="section-title">Tools &amp; Shared Resources</h2>
+  <p class="section-desc">Web applications and shared data supporting field surveys, damage modeling, agent-based simulation, and collaborative project management.</p>
+
+  <div class="cards">
+
+    <!-- 1 ─ NSI Field Survey Tool -->
+    <a class="card" href="https://erfan-amini.github.io/buildings-survey/" target="_blank" rel="noopener">
+      <div class="card-header">
+        <div class="card-icon survey">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="card-title">NSI Field Survey Tool</div>
+      </div>
+      <div class="card-summary">Map-based building inventory verification and attribute estimation across Shinnecock, Mastic Beach, Pamunkey, and West Point with automated footprint detection and value estimation.</div>
+      <div class="card-footer">
+        <span class="access-tag locked">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Password Protected
+        </span>
+        <span class="card-link-icon">→</span>
+      </div>
+    </a>
+
+    <!-- 2 ─ ADAPT -->
+    <a class="card" href="https://adapt2026.streamlit.app/" target="_blank" rel="noopener">
+      <div class="card-header">
+        <div class="card-icon adapt">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+        </div>
+        <div class="card-title">ADAPT</div>
+      </div>
+      <div class="card-summary">Assessment of Damage and Adaptation Planning Tool. Computes building-level flood damages under sea level rise scenarios and evaluates household retrofit strategies with cost-benefit analysis.</div>
+      <div class="card-footer">
+        <span class="access-tag locked">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Password Protected
+        </span>
+        <span class="card-link-icon">→</span>
+      </div>
+    </a>
+
+    <!-- 3 ─ Flood ABM -->
+    <a class="card" href="https://flood-abm.streamlit.app/" target="_blank" rel="noopener">
+      <div class="card-header">
+        <div class="card-icon abm">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><line x1="14.5" y1="9.5" x2="17.5" y2="6.5"/><line x1="9.5" y1="14.5" x2="6.5" y2="17.5"/><circle cx="5" cy="5" r="2"/><line x1="9.5" y1="9.5" x2="6.5" y2="6.5"/></svg>
+        </div>
+        <div class="card-title">Flood ABM</div>
+      </div>
+      <div class="card-summary">Agent-based model simulating household adaptation decisions under evolving flood risk. Explores how retrofit, relocation, and infrastructure choices interact across community networks.</div>
+      <div class="card-footer">
+        <span class="access-tag locked">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Password Protected
+        </span>
+        <span class="card-link-icon">→</span>
+      </div>
+    </a>
+
+    <!-- 4 ─ Shared Drive -->
+    <a class="card" href="https://drive.google.com/open?id=17c2ZJ18UIdmCWXZYOB_9cDD38ZGMXud0&usp=drive_fs" target="_blank" rel="noopener">
+      <div class="card-header">
+        <div class="card-icon drive">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="card-title">Shared Project Folder</div>
+      </div>
+      <div class="card-summary">Centralized Google Drive workspace for project documents, data files, meeting notes, and collaborative materials shared across all partner institutions.</div>
+      <div class="card-footer">
+        <span class="access-tag team">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Project Team Only
+        </span>
+        <span class="card-link-icon">→</span>
+      </div>
+    </a>
+
+  </div>
+</main>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  Developed by Erfan Amini · Center for Climate Systems Research, The Climate School, Columbia University
+</footer>
+
+</body>
+</html>
